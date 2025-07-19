@@ -5,19 +5,22 @@ import java.util.Scanner;
 public class MainUIHandler {
 
 	public static Scanner sc = new Scanner(System.in);
+	
+	private final StudentDormUIHandler studentDormUIHandler = new StudentDormUIHandler();
 
 	public void handleMainMenu() {
 
 		String answer;
 		do {
-			System.out.println("\nOdaberite opciju:");
-			System.out.println("1 - Rukovanje studentskim domovima");
-			System.out.println("X - Izlazak iz programa");
+			System.out.println("\nSelect an option:");
+			System.out.println("1 - Manage student dorms");
+			System.out.println("X - Exit the program");
 
 			answer = sc.nextLine();
 
 			switch (answer) {
 			case "1":
+				studentDormUIHandler.handleDormMenu();
 				break;
 			case "2":
 				break;
