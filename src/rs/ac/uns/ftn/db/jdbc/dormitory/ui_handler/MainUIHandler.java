@@ -13,7 +13,8 @@ public class MainUIHandler {
 		String answer;
 		do {
 			System.out.println("\nSelect an option:");
-			System.out.println("1 - Manage student dorms");
+			System.out.println("1 - Manage student dorms");        
+			System.out.println("2 - Show student dorms grouped by city");
 			System.out.println("X - Exit the program");
 
 			answer = sc.nextLine();
@@ -23,6 +24,7 @@ public class MainUIHandler {
 				studentDormUIHandler.handleDormMenu();
 				break;
 			case "2":
+	            studentDormUIHandler.showDormsGroupedByCity();
 				break;
 			}
 				

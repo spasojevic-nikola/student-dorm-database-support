@@ -182,4 +182,31 @@ public class StudentDormDAOImpl implements StudentDormDAO {
             return preparedStatement.executeUpdate() == 1;
         }
     }
+    
+    @Override
+    public List<StudentDorm> findByCityId(int cityId) throws SQLException {
+        String query = "SELECT id_std, naz_std, adr, kapac, id_gr FROM studentskidom WHERE id_gr = ?";
+        List<StudentDorm> dormList = new ArrayList<>();
+
+        try (Connection connection = ConnectionUtil_HikariCP.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, cityId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    StudentDorm dorm = new StudentDorm(
+                        resultSet.getInt("id_std"),
+                        resultSet.getString("naz_std"),
+                        resultSet.getString("adr"),
+                        resultSet.getInt("kapac"),
+                        resultSet.getInt("id_gr")
+                    );
+                    dormList.add(dorm);
+                }
+            }
+        }
+        return dormList;
+    }
+
 }
