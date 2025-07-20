@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import rs.ac.uns.ftn.db.jdbc.dormitory.dto.CityDormsDTO;
+import rs.ac.uns.ftn.db.jdbc.dormitory.model.City;
 import rs.ac.uns.ftn.db.jdbc.dormitory.model.StudentDorm;
 import rs.ac.uns.ftn.db.jdbc.dormitory.service.StudentDormService;
 
@@ -179,4 +181,26 @@ public class StudentDormUIHandler {
             e.printStackTrace();
         }
     }
+    
+
+    public void showDormsGroupedByCity() {
+        try {
+            List<CityDormsDTO> dtos = dormService.getDormsGroupedByCity();
+            for (CityDormsDTO dto : dtos) {
+                City city = dto.getCity();
+                System.out.println("City: " + city.getName() + " (" + city.getPostalCode() + ")");
+                System.out.println("Dormitories:");
+
+                for (StudentDorm dorm : dto.getDorms()) {
+                    System.out.println("- " + dorm.getName() + " (Capacity: " + dorm.getCapacity() + ")");
+                }
+
+                System.out.println("------------------------------------------");
+            }
+        } catch (SQLException e) {
+            System.out.println("An error occurred while fetching dorms grouped by city.");
+            e.printStackTrace();
+        }
+    }
+
 }
