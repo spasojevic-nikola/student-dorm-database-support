@@ -6,6 +6,7 @@ import java.util.List;
 import rs.ac.uns.ftn.db.jdbc.dormitory.dao.ComplexQueryDAO;
 import rs.ac.uns.ftn.db.jdbc.dormitory.dao.impl.ComplexQueryDAOImpl;
 import rs.ac.uns.ftn.db.jdbc.dormitory.dto.StudentFullDetailsDTO;
+import rs.ac.uns.ftn.db.jdbc.dormitory.dto.StudentPaymentsDTO;
 
 public class ComplexQueryService {
 
@@ -14,4 +15,9 @@ public class ComplexQueryService {
     public List<StudentFullDetailsDTO> getStudentsWithFullDetails() throws SQLException {
         return dao.fetchStudentsWithDetails();
     }
+    
+    public List<StudentPaymentsDTO> getPaymentsWithDetails() throws SQLException {
+        return dao.fetchPaymentsWithDetails();
+    }
+
 }

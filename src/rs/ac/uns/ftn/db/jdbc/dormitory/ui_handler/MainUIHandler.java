@@ -17,6 +17,7 @@ public class MainUIHandler {
 			System.out.println("1 - Manage student dorms");        
 			System.out.println("2 - Show student dorms grouped by city");
 	        System.out.println("3 - Complex query:  View students with faculty, dorm, room, city, and inventory details");
+	        System.out.println("4 - Payments per Student with Faculty, Dorm, Room, and City");
 			System.out.println("X - Exit the program");
 
 			answer = sc.nextLine();
@@ -31,6 +32,9 @@ public class MainUIHandler {
 				case "3":
 	                complexQueryUIHandler.showStudentsWithDetails();
 	                break;
+				case "4":
+				    complexQueryUIHandler.showPaymentsWithDetails();
+				    break;
 			}
 				
 
