@@ -8,6 +8,7 @@ public class MainUIHandler {
 	
 	private final StudentDormUIHandler studentDormUIHandler = new StudentDormUIHandler();
 	private final ComplexQueryUIHandler complexQueryUIHandler = new ComplexQueryUIHandler();
+    private final StudentPaymentTransactionUIHandler transactionUIHandler = new StudentPaymentTransactionUIHandler(); // nov
 
 	public void handleMainMenu() {
 
@@ -16,8 +17,10 @@ public class MainUIHandler {
 			System.out.println("\nSelect an option:");
 			System.out.println("1 - Manage student dorms");        
 			System.out.println("2 - Show student dorms grouped by city");
-	        System.out.println("3 - Complex query:  View students with faculty, dorm, room, city, and inventory details");
-	        System.out.println("4 - Payments per Student with Faculty, Dorm, Room, and City");
+	        System.out.println("3 - Complex query: View students with faculty, dorm, room, city, and inventory details");
+	        System.out.println("4 - Complex query: View payments per Student with Faculty, Dorm, Room, and City");
+            System.out.println("5 - Transaction: Add/update/delete student payment and related data");  // nova opcija
+
 			System.out.println("X - Exit the program");
 
 			answer = sc.nextLine();
@@ -35,6 +38,9 @@ public class MainUIHandler {
 				case "4":
 				    complexQueryUIHandler.showPaymentsWithDetails();
 				    break;
+				case "5":
+                    transactionUIHandler.handleTransactionMenu();  // poziv metode za transakcije
+                    break;
 			}
 				
 
